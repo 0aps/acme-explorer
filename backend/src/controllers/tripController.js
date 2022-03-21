@@ -4,8 +4,8 @@ import Constants from '../shared/constants.js';
 import { StatusCodes } from 'http-status-codes';
 import { ApplicationState } from '../shared/enums.js';
 import mongoose from 'mongoose';
-import { locationModel } from "../models/locationModel.js";
-import {RecordNotFound} from "../shared/exceptions.js";
+import { locationModel } from '../models/locationModel.js';
+import { RecordNotFound } from '../shared/exceptions.js';
 
 // Find one trip by id, no login required
 export const findTrip = async (req, res) => {
@@ -412,19 +412,19 @@ export const assignLocation = async (req, res, next) => {
     const record = await tripModel.findById(req.params.tripId);
 
     if (!record) {
-      return next(new RecordNotFound('The trip wasn\'t found. Please verify.'));
+      return next(new RecordNotFound("The trip wasn't found. Please verify."));
     }
 
     const stage = record.stages.find(stage => stage._id.toString() === req.params.stageId);
 
     if (!stage) {
-      return next(new RecordNotFound('The stage wasn\'t found, please verify'));
+      return next(new RecordNotFound("The stage wasn't found, please verify"));
     }
 
     const location = await locationModel.findById(req.params.locationId);
 
     if (!location) {
-      return next(new RecordNotFound('The location wasn\'t found, please verify'));
+      return next(new RecordNotFound("The location wasn't found, please verify"));
     }
     stage.locations.push(location);
 

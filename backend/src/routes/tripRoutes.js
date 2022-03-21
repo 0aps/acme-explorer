@@ -355,5 +355,7 @@ export const tripRoutes = app => {
    *        403:
    *          description: Authorization error
    */
-  app.route('/v1/trips/:tripId/stages/:stageId/assign/:locationId').patch(verifyUser([Roles.ADMIN, Roles.MANAGER]), assignLocation);
+  app
+    .route('/v1/trips/:tripId/stages/:stageId/assign/:locationId')
+    .patch(verifyUser([Roles.ADMIN, Roles.MANAGER]), assignLocation);
 };

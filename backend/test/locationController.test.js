@@ -29,8 +29,8 @@ describe('Location API endpoints', () => {
       description: 'test description',
       type: 'restaurants',
       coordinates: {
-          lat: 36.5210,
-          long: 6.2805
+        lat: 36.521,
+        long: 6.2805
       }
     };
 
@@ -49,7 +49,6 @@ describe('Location API endpoints', () => {
   });
 
   describe('Locations endpoints', () => {
-
     test('should return the list of locations', async () => {
       const response = await agent.set('idtoken', token).get(base);
       expect(response.statusCode).toBe(StatusCodes.OK);
@@ -62,8 +61,8 @@ describe('Location API endpoints', () => {
         description: 'test description',
         type: 'restaurants',
         coordinates: {
-            lat: 36.5210,
-            long: 6.2805
+          lat: 36.521,
+          long: 6.2805
         }
       };
 
@@ -82,8 +81,8 @@ describe('Location API endpoints', () => {
         description: 'test description',
         type: 'restaurants',
         coordinates: {
-            lat: 36.5210,
-            long: 6.2805
+          lat: 36.521,
+          long: 6.2805
         }
       };
 
@@ -106,10 +105,10 @@ describe('Location API endpoints', () => {
       const response = await agent
         .set('idtoken', adminToken)
         .patch(`${base}/${location._id}`)
-        .send({ type: "bar" });
+        .send({ type: 'bar' });
       expect(response.statusCode).toBe(StatusCodes.OK);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body.type).toBe("bar");
+      expect(response.body.type).toBe('bar');
     });
 
     test('should delete an existing location', async () => {
@@ -117,7 +116,6 @@ describe('Location API endpoints', () => {
       const response = await agent.set('idtoken', adminToken).delete(`${base}/${location._id}`);
       expect(response.statusCode).toBe(StatusCodes.NO_CONTENT);
     });
-
   });
 });
 

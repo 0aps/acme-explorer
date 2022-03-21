@@ -20,7 +20,7 @@ import {
   registerRoutes,
   dataWarehouseRoutes,
   configurationRoutes,
-  locationRoutes,
+  locationRoutes
 } from '../routes/index.js';
 
 export class Server {

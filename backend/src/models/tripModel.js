@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 import dateFormat from 'dateformat';
 import { customAlphabet } from 'nanoid';
-import { LocationSchema } from "./locationModel.js";
+import { LocationSchema } from './locationModel.js';
 const idGenerator = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 4);
 
 const StageSchema = new Schema({
@@ -21,8 +21,8 @@ const StageSchema = new Schema({
     required: 'Kindly enter the price of the stage'
   },
   locations: {
-    type: [LocationSchema],
-  },
+    type: [LocationSchema]
+  }
 });
 
 const State = ['ACTIVE', 'INACTIVE', 'CANCELLED'];

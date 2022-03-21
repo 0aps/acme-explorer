@@ -2,16 +2,19 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const CoordinateSchema = mongoose.Schema( {
-  lat: {
-    type: Number,
-    required: 'You need to provide the lat coordinate'
+const CoordinateSchema = mongoose.Schema(
+  {
+    lat: {
+      type: Number,
+      required: 'You need to provide the lat coordinate'
+    },
+    long: {
+      type: Number,
+      required: 'You need to provide the long coordinate'
+    }
   },
-  long: {
-    type: Number,
-    required: 'You need to provide the long coordinate'
-  }
-}, { _id : false });
+  { _id: false }
+);
 
 export const LocationSchema = new Schema(
   {
@@ -24,12 +27,12 @@ export const LocationSchema = new Schema(
       required: 'You need to provide a description'
     },
     type: {
-      type: String,
+      type: String
     },
     coordinates: {
       type: CoordinateSchema,
       required: 'You need to provide a coordinate'
-    },
+    }
   },
   {
     timestamps: true

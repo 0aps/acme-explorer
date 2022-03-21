@@ -3,7 +3,8 @@ import {
   changeRebuildPeriod,
   findLastIndicator,
   findDataCube,
-  createDataCube
+  createDataCube,
+  findLocationDashboard
 } from '../controllers/dataWarehouseController.js';
 import { Roles } from '../shared/enums.js';
 import { verifyUser } from '../controllers/authController.js';
@@ -106,4 +107,16 @@ export const dataWarehouseRoutes = app => {
     .route('/v1/datawarehouse/cube')
     .get(verifyUser([Roles.ADMIN]), findDataCube)
     .post(verifyUser([Roles.ADMIN]), createDataCube);
+
+  /**
+   * @openapi
+   * /v1/datawarehouse/locations:
+   *   get:
+   *     description: Get a list all locations statistics
+   *     tags: [Dashboard]
+   *     responses:
+   *       200:
+   *         description: List all locations statistics
+   */
+  app.route('/v1/datawarehouse/locations').get(verifyUser([Roles.ADMIN]), findLocationDashboard);
 };

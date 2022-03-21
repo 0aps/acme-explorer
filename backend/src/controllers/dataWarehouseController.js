@@ -8,6 +8,7 @@ import { applicationModel } from '../models/applicationModel.js';
 import { CronJob, CronTime } from 'cron';
 import { Operator } from '../shared/enums.js';
 import { InvalidRequest } from '../shared/exceptions.js';
+import { locationModel } from '../models/locationModel.js';
 
 // '0 0 * * * *' Every hour
 // '*/30 * * * * *' Every 30 seconds
@@ -347,3 +348,23 @@ function computeRatioOfApplications(callback) {
     (err, res) => callback(err, res)
   );
 }
+
+export const findLocationDashboard = async (req, res) => {
+  try {
+    const results = await locationModel.aggregate([
+      {
+        $group: {
+          _id: '$type',
+          visited: { $sum: 1 }
+        }
+      },
+      {
+        $sort: { count: -1 }
+      },
+    ]);
+
+    res.json(results);
+  } catch (e) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(e.message);
+  }
+};
