@@ -7,3 +7,4 @@ export * from './loginRoutes.js';
 export * from './registerRoutes.js';
 export * from './dataWarehouseRoutes.js';
 export * from './configurationRoutes.js';
+export * from './locationRoutes.js';

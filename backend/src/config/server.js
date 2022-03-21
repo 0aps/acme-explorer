@@ -19,7 +19,8 @@ import {
   loginRoutes,
   registerRoutes,
   dataWarehouseRoutes,
-  configurationRoutes
+  configurationRoutes,
+  locationRoutes,
 } from '../routes/index.js';
 
 export class Server {
@@ -54,6 +55,7 @@ export class Server {
     registerRoutes(this.app);
     dataWarehouseRoutes(this.app);
     configurationRoutes(this.app);
+    locationRoutes(this.app);
 
     this.app.use(errorHandler);
 

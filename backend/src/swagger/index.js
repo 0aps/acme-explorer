@@ -5,3 +5,4 @@ export * from './sponsorshipSwagger.js';
 export * from './tripSwagger.js';
 export * from './registerSwagger.js';
 export * from './configurationSwagger.js';
+export * from './locationSwagger.js';
