@@ -9,7 +9,8 @@ import {
   cancelTrip,
   deleteStage,
   addStage,
-  findOneOfMyTrips
+  findOneOfMyTrips,
+  assignLocation
 } from '../controllers/tripController.js';
 import { Roles } from '../shared/enums.js';
 import { verifyUser } from '../controllers/authController.js';
@@ -333,4 +334,26 @@ export const tripRoutes = app => {
    *          description: Authorization error
    */
   app.route('/v1/trips/:tripId/stages').post(verifyUser([Roles.MANAGER]), addStage);
+
+  /**
+   * @openapi
+   * /v1/trips/{tripId}/stages/{stageId}/locations:
+   *   patch:
+   *      description: Assign a new location in a stage
+   *      tags: [Trips]
+   *      responses:
+   *        200:
+   *          description: The stage was successfully added to the trip
+   *          content:
+   *            application/json:
+   *              schema:
+   *                $ref: '#/components/schemas/trip'
+   *        422:
+   *          description: Validation error
+   *        401:
+   *          description: Authentication error
+   *        403:
+   *          description: Authorization error
+   */
+  app.route('/v1/trips/:tripId/stages/:stageId/assign/:locationId').patch(verifyUser([Roles.ADMIN, Roles.MANAGER]), assignLocation);
 };

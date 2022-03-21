@@ -4,7 +4,7 @@ import { BaseError } from './errors/base-error.js';
 export class RecordNotFound extends BaseError {
   constructor(message = '') {
     super(message);
-    this.message = 'El registro no se ha encontrado. Por favor verificar.';
+    this.message = this.message || 'El registro no se ha encontrado. Por favor verificar.';
     this.code = StatusCodes.NOT_FOUND;
   }
 }

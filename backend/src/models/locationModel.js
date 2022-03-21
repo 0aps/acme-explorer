@@ -13,7 +13,7 @@ const CoordinateSchema = mongoose.Schema( {
   }
 }, { _id : false });
 
-const LocationSchema = new Schema(
+export const LocationSchema = new Schema(
   {
     title: {
       type: String,
